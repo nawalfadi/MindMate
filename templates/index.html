@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate | Student Wellbeing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="orb-field" aria-hidden="true">
+    <span class="orb orb-joy"></span>
+    <span class="orb orb-sadness"></span>
+    <span class="orb orb-anger"></span>
+    <span class="orb orb-fear"></span>
+    <span class="orb orb-disgust"></span>
+    <span class="orb orb-anxiety"></span>
+    <span class="orb orb-envy"></span>
+    <span class="orb orb-embarrassment"></span>
+    <span class="orb orb-ennui"></span>
+</div>
+
+<nav class="navbar">
+    <div class="logo">
+        <span class="logo-orb" aria-hidden="true"></span>
+        MindMate
+    </div>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#checkin">Check-in</a>
+        <a href="#self">Sense of Self</a>
+        <a href="#chat">Talk</a>
+        <a href="#help">Get Help</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <p class="tagline">STUDENT WELLBEING</p>
+        <h1>Every feeling <span>has a purpose.</span></h1>
+        <p class="hero-text">
+            MindMate uses AI to help you understand what you feel,
+            try a healthy way to cope, and find support. Uncomfortable
+            feelings count. Accepting them works better than fighting them.
+        </p>
+        <div class="hero-buttons">
+            <a href="#checkin" class="primary-btn">Start a Check-in</a>
+            <a href="#chat" class="secondary-btn">Talk to MindMate</a>
+        </div>
+    </div>
+</section>
+
+<section id="checkin" class="section">
+    <div class="section-title">
+        <p class="small-title">CHECK-IN</p>
+        <h2>Which feeling is loudest?</h2>
+        <p>Each one is trying to do a job. Pick the feeling that fits right now.</p>
+    </div>
+    <div class="mood-container">
+        <button type="button" class="mood-card" data-emotion="anxiety" aria-pressed="false" onclick="selectMood('Anxiety')">
+            <img src="{{ url_for('static', filename='characters/anxiety.png') }}" alt="">
+            <strong>Anxiety</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="envy" aria-pressed="false" onclick="selectMood('Envy')">
+            <img src="{{ url_for('static', filename='characters/envy.png') }}" alt="">
+            <strong>Envy</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="embarrassment" aria-pressed="false" onclick="selectMood('Embarrassment')">
+            <img src="{{ url_for('static', filename='characters/embarrassment.png') }}" alt="">
+            <strong>Embarrassment</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="ennui" aria-pressed="false" onclick="selectMood('Ennui')">
+            <img src="{{ url_for('static', filename='characters/ennui.png') }}" alt="">
+            <strong>Ennui</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="disgust" aria-pressed="false" onclick="selectMood('Disgust')">
+            <img src="{{ url_for('static', filename='characters/disgust.png') }}" alt="">
+            <strong>Disgust</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="fear" aria-pressed="false" onclick="selectMood('Fear')">
+            <img src="{{ url_for('static', filename='characters/fear.png') }}" alt="">
+            <strong>Fear</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="joy" aria-pressed="false" onclick="selectMood('Joy')">
+            <img src="{{ url_for('static', filename='characters/joy.png') }}" alt="">
+            <strong>Joy</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="anger" aria-pressed="false" onclick="selectMood('Anger')">
+            <img src="{{ url_for('static', filename='characters/anger.png') }}" alt="">
+            <strong>Anger</strong>
+        </button>
+        <button type="button" class="mood-card" data-emotion="sadness" aria-pressed="false" onclick="selectMood('Sadness')">
+            <img src="{{ url_for('static', filename='characters/sadness.png') }}" alt="">
+            <strong>Sadness</strong>
+        </button>
+    </div>
+    <p id="mood-result" class="mood-result"></p>
+</section>
+
+<section id="self" class="section">
+    <div class="section-title">
+        <p class="small-title">SENSE OF SELF</p>
+        <h2>You are more than one feeling.</h2>
+        <p>
+            Your sense of self is built from all of your experiences,
+            not only the good ones. Accepting a feeling gives you more
+            room than fighting it.
+        </p>
+    </div>
+    <div class="belief-container">
+        <article class="belief belief-joy">
+            <h3>Every feeling has a job.</h3>
+            <p>Joy, sadness, anger, fear, and the uncomfortable ones too. Each one is information, even when it is hard to sit with.</p>
+        </article>
+        <article class="belief belief-anxiety">
+            <h3>Protection can take over.</h3>
+            <p>Anxiety tries to keep you safe by planning for what might go wrong. It causes problems when it is the only feeling in charge.</p>
+        </article>
+        <article class="belief belief-self">
+            <h3>The hard days count too.</h3>
+            <p>Envy, embarrassment, and flat "whatever" days belong in the story of who you are. Some feelings can also wait until you are ready for them.</p>
+        </article>
+    </div>
+</section>
+
+<section id="chat" class="section chat-section">
+    <div class="section-title">
+        <p class="small-title">AI SUPPORT</p>
+        <h2>Talk it through</h2>
+        <p>Tell MindMate what is going on. It can help you understand the feeling and try a healthier next step.</p>
+    </div>
+    <div class="chat-box">
+        <div class="chat-top">
+            <span class="lamp joy" aria-hidden="true"></span>
+            <span class="lamp sadness" aria-hidden="true"></span>
+            <span class="lamp anger" aria-hidden="true"></span>
+            <span id="console-mark" class="console-mark" hidden></span>
+            <span id="console-status">Ready when you are</span>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="message bot-message">
+                Hi, I'm MindMate. One feeling might be loud right now, and the others still matter. How are you feeling today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input
+                type="text"
+                id="user-message"
+                placeholder="Type how you're feeling..."
+                autocomplete="off"
+                onkeydown="handleEnter(event)"
+            >
+            <button type="button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-title">
+        <p class="small-title">QUICK RESET</p>
+        <h2>A small way to cope.</h2>
+        <p>When one feeling is doing all the work, a short reset gives the others some room.</p>
+    </div>
+    <div class="relief-container">
+        <article class="relief-card relief-joy">
+            <span class="guide guide-joy" aria-hidden="true"></span>
+            <p class="relief-who">Joy</p>
+            <h3>Breathing</h3>
+            <p>Joy does not have to fill the whole day. One slow minute of breath makes room for the other feelings.</p>
+        </article>
+        <article class="relief-card relief-sadness">
+            <span class="guide guide-sadness" aria-hidden="true"></span>
+            <p class="relief-who">Sadness</p>
+            <h3>Journaling</h3>
+            <p>Sadness helps a loss be felt. Write what is here and let it stay on the page.</p>
+        </article>
+        <article class="relief-card relief-anxiety">
+            <span class="guide guide-anxiety" aria-hidden="true"></span>
+            <p class="relief-who">Anxiety</p>
+            <h3>Step away</h3>
+            <p>Anxiety is trying to protect you by scanning the future. Step away for a few minutes and come back to what is happening now.</p>
+        </article>
+    </div>
+</section>
+
+<section id="help" class="help-section">
+    <div class="help-content">
+        <p class="small-title">NEED SUPPORT?</p>
+        <h2>You don't have to handle every feeling alone.</h2>
+        <p>
+            MindMate is an educational tool and is not a replacement
+            for professional mental health care.
+        </p>
+        <button type="button" class="help-btn" onclick="showSupportMessage()">
+            Find Support
+        </button>
+        <p id="support-message" class="support-message"></p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">
+        <span class="logo-orb" aria-hidden="true"></span>
+        <strong>MindMate</strong>
+    </div>
+    <p>AI support for understanding feelings, coping, and finding help.</p>
+    <p class="disclaimer">MindMate does not provide medical diagnosis or treatment.</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
